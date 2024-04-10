@@ -6,6 +6,10 @@ namespace test_app;
 
 public class MyDbContext : DbContext
 {
+    public MyDbContext()
+    {
+    }
+    
         public DbSet<Diagnose> Diagnose { get; set; } = null!;
         public DbSet<Doctor> Doctor { get; set; } = null!;
         public DbSet<Patient> Patient { get; set; } = null!;

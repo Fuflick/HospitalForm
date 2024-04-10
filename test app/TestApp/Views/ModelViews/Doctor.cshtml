@@ -1,0 +1,28 @@
+@model IEnumerable<Doctor>   
+
+@{
+    ViewBag.Title = "Список врачей";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Специализация</th>
+        <!-- Добавьте другие заголовки столбцов, если необходимо -->
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var doctor in Model)
+    {
+        <tr>
+            <td>@doctor.Name</td>
+            <td>@doctor.Specializations</td>
+            <!-- Добавьте другие ячейки данных, если необходимо -->
+        </tr>
+    }
+    </tbody>
+</table>
