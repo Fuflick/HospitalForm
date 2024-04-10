@@ -1,0 +1,30 @@
+/home/kraiben/Code/test app/test app/bin/Debug/net7.0/appsettings.Development.json
+/home/kraiben/Code/test app/test app/bin/Debug/net7.0/appsettings.json
+/home/kraiben/Code/test app/test app/bin/Debug/net7.0/test app.staticwebassets.runtime.json
+/home/kraiben/Code/test app/test app/bin/Debug/net7.0/test app
+/home/kraiben/Code/test app/test app/bin/Debug/net7.0/test app.deps.json
+/home/kraiben/Code/test app/test app/bin/Debug/net7.0/test app.runtimeconfig.json
+/home/kraiben/Code/test app/test app/bin/Debug/net7.0/test app.dll
+/home/kraiben/Code/test app/test app/bin/Debug/net7.0/test app.pdb
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.GeneratedMSBuildEditorConfig.editorconfig
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.AssemblyInfoInputs.cache
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.AssemblyInfo.cs
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.csproj.CoreCompileInputs.cache
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.MvcApplicationPartsAssemblyInfo.cache
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.RazorAssemblyInfo.cache
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.RazorAssemblyInfo.cs
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/staticwebassets/msbuild.test app.Microsoft.AspNetCore.StaticWebAssets.props
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/staticwebassets/msbuild.build.test app.props
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.test app.props
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.test app.props
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/staticwebassets.pack.json
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/staticwebassets.build.json
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/staticwebassets.development.json
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/scopedcss/bundle/test app.styles.css
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/scopedcss/projectbundle/test app.bundle.scp.css
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.dll
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/refint/test app.dll
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.pdb
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/test app.genruntimeconfig.cache
+/home/kraiben/Code/test app/test app/obj/Debug/net7.0/ref/test app.dll
