@@ -17,12 +17,11 @@
     </thead>
     <tbody>
     @foreach (var doctor in Model)
-    {
-        <tr>
-            <td>@doctor.Name</td>
-            <td>@doctor.Specializations</td>
-            <!-- Добавьте другие ячейки данных, если необходимо -->
-        </tr>
-    }
+            {
+                <tr>
+                    <td>@doctor.Name</td>
+                    <td>@string.Join(", ", doctor.Specializations)</td>
+                </tr>
+            }
     </tbody>
 </table>

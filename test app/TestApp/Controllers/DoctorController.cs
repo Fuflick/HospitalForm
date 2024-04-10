@@ -12,11 +12,6 @@ namespace test_app.Controllers
     public class DoctorController : Controller
     {
         private readonly MyDbContext _dbContext;
-
-        public DoctorController(MyDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
         
         [HttpGet("Doctors")]
         public IActionResult Index()
