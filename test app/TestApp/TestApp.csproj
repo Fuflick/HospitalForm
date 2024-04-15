@@ -22,8 +22,4 @@
       <_ContentIncludedByDefault Remove="Pages\Diagnose\Index.cshtml" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Pages\" />
-    </ItemGroup>
-
 </Project>

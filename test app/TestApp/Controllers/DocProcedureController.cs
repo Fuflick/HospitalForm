@@ -9,29 +9,25 @@ namespace test_app.Controllers
 {
     public class DocProcedureController : Controller
     {
-        private readonly MyDbContext _dbContext;
-        
-        public DocProcedureController(MyDbContext dbContext)
+        // GET: DocProcedure/Create
+        public IActionResult Index()
         {
-            _dbContext = dbContext;
+            return View();
         }
 
+        // POST: DocProcedure/Create
         [HttpPost]
-        public async Task<IActionResult> Create(DocProcedure docProcedure)
+        public async Task<IActionResult> Create([Bind("DocId, ProcId")] DocProcedure docProcedure)
         {
+            using MyDbContext dbContext = new MyDbContext();
             if (ModelState.IsValid)
             {
-                var docProceduremodel = new DocProcedure()
-                {
-                    DocId = 1,
-                    ProcId = 1,
-                };
-                _dbContext.DocProcedure.Add(docProceduremodel);
-                await _dbContext.SaveChangesAsync();
-
-                return RedirectToAction("Index", "Doctor");
+                dbContext.DocProcedure.Add(docProcedure);
+                await dbContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(docProcedure);
         }
+        
     }
 }
