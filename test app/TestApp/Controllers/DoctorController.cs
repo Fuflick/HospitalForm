@@ -1,27 +1,57 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using test_app.Models;
-using testapp.Migrations;
 
 namespace test_app.Controllers
 {
     public class DoctorController : Controller
     {
-        private readonly MyDbContext _dbContext;
-        
-        [HttpGet("Doctors")]
-        public IActionResult Index()
+        // GET: Doctor
+        public async Task<IActionResult> Index()
         {
-            var doctors = new List<Doctor>
-            {
-                new Doctor() { Name = "bob", Specializations = [Specialization.Lor, Specialization.Surgeon] }
-            };
-        
+            using MyDbContext dbContext = new MyDbContext();
+            var doctors = await dbContext.Doctor.ToListAsync();
             return View(doctors);
+        }
+
+        // GET: Doctor/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Doctor/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Name,Specializations")] Doctor doctor)
+        {
+            if (ModelState.IsValid)
+            {
+                using MyDbContext dbContext = new MyDbContext();
+                dbContext.Add(doctor);
+                await dbContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(doctor);
+        }
+
+        // POST: Doctor/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            using MyDbContext dbContext = new MyDbContext();
+            var doctor = await dbContext.Doctor.FindAsync(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            dbContext.Doctor.Remove(doctor);
+            await dbContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

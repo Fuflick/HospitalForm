@@ -43,7 +43,7 @@ namespace test_app.Controllers
         public async Task<IActionResult> Delete(int docId, int procId)
         {
             using MyDbContext dbContext = new MyDbContext();
-            var docProcedure = await dbContext.DocProcedure.FindAsync(docId, procId);
+            var docProcedure = await dbContext.DocProcedure.FirstOrDefaultAsync(d => d.DocId == docId && d.ProcId == procId);
             if (docProcedure == null)
             {
                 return NotFound();
@@ -53,5 +53,7 @@ namespace test_app.Controllers
             await dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
     }
 }
