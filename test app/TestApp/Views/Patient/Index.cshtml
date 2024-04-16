@@ -10,6 +10,7 @@
 <table>
     <thead>
     <tr>
+        <th>Id</th>.
         <th>Имя</th>
         <th>Пол</th>
         <!-- Добавьте другие заголовки столбцов, если необходимо -->
@@ -19,6 +20,7 @@
     @foreach (var patient in Model)
     {
         <tr>
+            <td>@patient.Id</td>
             <td>@patient.Name</td>
             <td>@patient.Gender</td>
         </tr>

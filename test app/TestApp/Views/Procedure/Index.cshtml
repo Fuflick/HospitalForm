@@ -10,10 +10,9 @@
 <table>
     <thead>
     <tr>
-       <th>Название</th>
-       <th colspan="2"></th> <!-- Пустая ячейка для промежутка -->
-       <th>Стоимость</th>
-       <th colspan="2"></th> <!-- Пустая ячейка для промежутка -->
+        <th>Id</th>
+        <th>Название</th>
+        <th>Стоимость</th>
         <th>Дата</th>
     </tr>
     </thead>
@@ -21,6 +20,7 @@
     @foreach (var procedure in Model)
             {
                 <tr>
+                    <td>@procedure.Id</td>
                     <td>@procedure.Body</td>
                     <td>@procedure.Cost</td>
                     <td>@procedure.Date</td>

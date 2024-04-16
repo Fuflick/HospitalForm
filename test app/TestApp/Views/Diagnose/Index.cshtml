@@ -1,18 +1,29 @@
 @model System.Collections.Generic.List<test_app.Models.Diagnose>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Список поставленных диагнозов";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>@ViewBag.Title</h2>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Содержание</th>
+        <th>Дата выставления</th>
+        <!-- Добавьте другие заголовки столбцов, если необходимо -->
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var diagnose in Model)
+    {
+        <tr>
+            <td>@diagnose.Id</td>
+            <td>@diagnose.Body</td>
+            <td>@diagnose.Date</td>
+        </tr>
+    }
+    </tbody>
+</table> 
