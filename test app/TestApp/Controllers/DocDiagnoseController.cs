@@ -41,7 +41,7 @@ namespace test_app.Controllers
         public async Task<IActionResult> Delete(int docId, int diagId)
         {
             using MyDbContext dbContext = new MyDbContext();
-            var docDiagnose = await dbContext.DocDiagnose.FirstOrDefaultAsync(d => d.DocId == docId && d.DiagId == diagId);
+            var docDiagnose = await dbContext.DocDiagnose.FirstOrDefaultAsync(d => d.DocId == docId && d.DocId == diagId);
             if (docDiagnose == null)
             {
                 return NotFound();
