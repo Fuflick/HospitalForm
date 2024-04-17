@@ -8,7 +8,7 @@ namespace test_app.Controllers
 {
     public class ProcedureController : Controller
     {
-       
+
         // GET: Procedure
         public async Task<IActionResult> Index()
         {
@@ -28,9 +28,9 @@ namespace test_app.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Body,Cost,Date")] Procedure procedure)
         {
-            using MyDbContext dbContext = new MyDbContext();
             if (ModelState.IsValid)
             {
+                using MyDbContext dbContext = new MyDbContext();
                 dbContext.Add(procedure);
                 await dbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

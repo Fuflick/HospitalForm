@@ -1,29 +1,44 @@
-@model IEnumerable<Patient>   
+@model IEnumerable<test_app.Models.Patient>
 
-@{
-    ViewBag.Title = "Список пациентов";
-    Layout = "_Layout";
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
 
-<h2>@ViewBag.Title</h2>
-
-<table>
-    <thead>
-    <tr>
-        <th>Id</th>.
-        <th>Имя</th>
-        <th>Пол</th>
-        <!-- Добавьте другие заголовки столбцов, если необходимо -->
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var patient in Model)
-    {
+<div class="container">
+    <h2>Patient List</h2>
+    <table class="table">
+        <thead>
         <tr>
-            <td>@patient.Id</td>
-            <td>@patient.Name</td>
-            <td>@patient.Gender</td>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Action</th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Gender</td>
+                <td>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+</div>
+
+</body>
+</html>
