@@ -1,29 +1,44 @@
-@model System.Collections.Generic.List<test_app.Models.Diagnose>
+@model IEnumerable<test_app.Models.Diagnose>
 
-@{
-    ViewBag.Title = "Список поставленных диагнозов";
-    Layout = "_Layout";
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagnose List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
 
-<h2>@ViewBag.Title</h2>
+<div class="container">
+    <h2>Diagnose List</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Body</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Body</td>
+                    <td>@item.Date.ToString()</td>
+                    <td>
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" name="Id" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+</div>
 
-<table>
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Содержание</th>
-        <th>Дата выставления</th>
-        <!-- Добавьте другие заголовки столбцов, если необходимо -->
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var diagnose in Model)
-    {
-        <tr>
-            <td>@diagnose.Id</td>
-            <td>@diagnose.Body</td>
-            <td>@diagnose.Date</td>
-        </tr>
-    }
-    </tbody>
-</table> 
+</body>
+</html>
