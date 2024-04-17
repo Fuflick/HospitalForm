@@ -1,0 +1,43 @@
+@model IEnumerable<test_app.Models.DocDiagnose>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DocProcedure List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>DocProcedure List</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>DocId</th>
+            <th>ProcId</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DocId</td>
+                <td>@item.DiagId</td>
+                <td>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="DocId" value="@item.DocId" />
+                        <input type="hidden" name="ProcId" value="@item.DiagId" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+</div>
+
+</body>
+</html>
