@@ -4,50 +4,50 @@ using test_app.Models;
 
 namespace test_app.Controllers
 {
-    public class DocDiagnoseController : Controller
+    public class PatDiagnoseController : Controller
     {
-        // GET: DocProcedure
+        // GET:  PatDiagnose
         public async Task<IActionResult> Index()
         {
             using MyDbContext dbContext = new MyDbContext();
-            var docDiagnose = await dbContext.DocDiagnose.ToListAsync();
-            return View(docDiagnose);
+            var patDiagnose = await dbContext.PatDiagnose.ToListAsync();
+            return View(patDiagnose);
         }
 
-        // GET: DocDiagnose/Create
+        // GET: PatDiagnose/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: DocDiagnose/Create
+        // POST:  PatDiagnose/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DocId,DiagId")] DocDiagnose docDiagnose)
+        public async Task<IActionResult> Create([Bind("PatId,DiagId")] PatDiagnose patDiagnose)
         {
             using MyDbContext dbContext = new MyDbContext();
             if (ModelState.IsValid)
             {
-                dbContext.Add(docDiagnose);
+                dbContext.Add(patDiagnose);
                 await dbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(docDiagnose);
+            return View(patDiagnose);
         }
 
-        // POST: DocDiagnose/Delete/6
+        // POST: DocDiagnose/Delete/7
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int docId, int diagId)
+        public async Task<IActionResult> Delete(int patId, int diagId)
         {
             using MyDbContext dbContext = new MyDbContext();
-            var docDiagnose = await dbContext.DocDiagnose.FirstOrDefaultAsync(d => d.DocId == docId && d.DiagId == diagId);
-            if (docDiagnose == null)
+            var patDiagnose = await dbContext.PatDiagnose.FirstOrDefaultAsync(d => d.PatId == patId && d.DiagId == diagId);
+            if (patDiagnose == null)
             {
                 return NotFound();
             }
 
-            dbContext.DocDiagnose.Remove(docDiagnose);
+            dbContext.PatDiagnose.Remove(patDiagnose);
             await dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

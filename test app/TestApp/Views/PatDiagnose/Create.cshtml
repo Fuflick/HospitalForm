@@ -1,0 +1,29 @@
+@model PatDiagnose
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "PatDiagnose", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PatId, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.PatId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PatId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DiagId, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.DiagId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DiagId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+}
