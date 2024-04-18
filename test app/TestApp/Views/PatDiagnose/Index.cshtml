@@ -28,9 +28,8 @@
                     <td>@item.DiagId</td>
                     <td>
                         <form asp-action="Delete" method="post">
-                            <input type="hidden" name="DocId" value="@item.Id"/>
-                            <input type="hidden" name="DocId" value="@item.PatId"/>
-                            <input type="hidden" name="ProcId" value="@item.DiagId"/>
+                            <input type="hidden" name="patId" value="@item.Id"/>
+                            <input type="hidden" name="diagId" value="@item.DiagId"/>
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
