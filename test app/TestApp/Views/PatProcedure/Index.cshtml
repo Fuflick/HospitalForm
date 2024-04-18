@@ -1,21 +1,21 @@
-@model IEnumerable<test_app.Models.PatDiagnose>
+@model IEnumerable<test_app.Models.PatProcedure>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PatDiagnose List</title>
+    <title>PatProcedure List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container">
-    <h2>PatDiagnose List</h2>
+    <h2>PatProcedure List</h2>
     <table class="table">
         <thead>
         <tr>
             <th>Id</th>
             <th>PatId</th>
-            <th>DiagId</th>
+            <th>ProcId</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -25,13 +25,15 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.PatId</td>
-                    <td>@item.DiagId</td>
+                    <td>@item.Procid</td>
                     <td>
-                        <form asp-action="Delete" method="post">
-                            <input type="hidden" name="patId" value="@item.PatId"/>
-                            <input type="hidden" name="diagId" value="@item.DiagId"/>
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                       <form asp-controller="PatProcedure" asp-action="Delete" method="post">
+
+                           <input type="hidden" name="patId" value="@item.PatId"/>
+                           <input type="hidden" name="procId" value="@item.Procid"/>
+                           <button type="submit" class="btn btn-danger">Delete</button>
+                       </form>
+
                     </td>
                 </tr>
             }
