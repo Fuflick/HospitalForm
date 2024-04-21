@@ -1,31 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using test_app.Models;
+using System.Threading.Tasks;
 
 namespace test_app.Controllers
 {
     public class PatProcedureController : Controller
     {
-        // GET:  PatDiagnose
+        
+        // GET: PatProcedure
         public async Task<IActionResult> Index()
         {
-            using MyDbContext dbContext = new MyDbContext();
-            var patProcedure = await dbContext.PatProcedure.ToListAsync();
-            return View(patProcedure);
+            var dbContext = new MyDbContext();
+            var patProcedures = await dbContext.PatProcedure.ToListAsync();
+            return View(patProcedures);
         }
 
-        // GET: PatDiagnose/Create
+        // GET: PatProcedure/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST:  PatDiagnose/Create
+        // POST: PatProcedure/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PatId,ProcId")] PatProcedure patProcedure)
+        public async Task<IActionResult> Create([Bind("PatId,Procid")] PatProcedure patProcedure)
         {
-            using MyDbContext dbContext = new MyDbContext();
+            var dbContext = new MyDbContext();
             if (ModelState.IsValid)
             {
                 dbContext.Add(patProcedure);
@@ -35,13 +37,14 @@ namespace test_app.Controllers
             return View(patProcedure);
         }
 
-        // POST: DocDiagnose/Delete/7
-        [HttpPost]
+        // POST: PatProcedure/Delete/5
+        // POST: PatProcedure/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int patId, int procId)
+        public async Task<IActionResult> DeleteConfirmed(int patId, int procId)
         {
-            using MyDbContext dbContext = new MyDbContext();
-            var patProcedure = await dbContext.PatProcedure.FirstOrDefaultAsync(d => d.PatId == patId && d.Procid== procId);
+            var dbContext = new MyDbContext();
+            var patProcedure = await dbContext.PatProcedure.FirstOrDefaultAsync(p => p.PatId == patId && p.Procid == procId);
             if (patProcedure == null)
             {
                 return NotFound();
@@ -51,7 +54,6 @@ namespace test_app.Controllers
             await dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
 
     }
 }

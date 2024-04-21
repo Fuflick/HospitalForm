@@ -23,4 +23,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+//Todo: DoCProcedure PatDiagnose PatProcedure
+
 app.Run();

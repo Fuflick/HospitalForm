@@ -27,13 +27,11 @@
                     <td>@item.PatId</td>
                     <td>@item.Procid</td>
                     <td>
-                       <form asp-controller="PatProcedure" asp-action="Delete" method="post">
-
-                           <input type="hidden" name="patId" value="@item.PatId"/>
-                           <input type="hidden" name="procId" value="@item.Procid"/>
-                           <button type="submit" class="btn btn-danger">Delete</button>
-                       </form>
-
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" name="patId" value="@item.PatId"/>
+                            <input type="hidden" name="procId" value="@item.Procid"/>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
             }

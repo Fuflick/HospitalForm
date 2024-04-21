@@ -12,22 +12,24 @@
     <h2>DocProcedure List</h2>
     <table class="table">
         <thead>
-            <tr>
-                <th>DocId</th>
-                <th>ProcId</th>
-                <th>Action</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>DocId</th>
+            <th>ProcId</th>
+            <th>Action</th>
+        </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>@item.Id</td>
                     <td>@item.DocId</td>
                     <td>@item.ProcId</td>
                     <td>
                         <form asp-action="Delete" method="post">
-                            <input type="hidden" name="DocId" value="@item.DocId" />
-                            <input type="hidden" name="ProcId" value="@item.ProcId" />
+                            <input type="hidden" name="docId" value="@item.DocId"/>
+                            <input type="hidden" name="procId" value="@item.ProcId"/>
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>

@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th>Id</th>
             <th>DocId</th>
             <th>ProcId</th>
             <th>Action</th>
@@ -22,12 +23,13 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>@item.Id</td>
                 <td>@item.DocId</td>
                 <td>@item.DiagId</td>
                 <td>
                     <form asp-action="Delete" asp-controller="DocDiagnose" method="post">
-                        <input type="hidden" name="docId" value="@item.DocId" />
-                        <input type="hidden" name="diagId" value="@item.DiagId" />
+                        <input type="hidden" name="docId" value="@item.DocId"/>
+                        <input type="hidden" name="diagId" value="@item.DiagId"/>
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
 

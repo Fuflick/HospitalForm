@@ -1,18 +1,18 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using test_app.Models;
+using System.Threading.Tasks;
 
 namespace test_app.Controllers
 {
     public class DocProcedureController : Controller
     {
+        
         // GET: DocProcedure
         public async Task<IActionResult> Index()
         {
-            using MyDbContext dbContext = new MyDbContext();
-            var docProcedures = await dbContext.DocProcedure.ToListAsync();
+            var dbConext = new MyDbContext();
+            var docProcedures = await dbConext.DocProcedure.ToListAsync();
             return View(docProcedures);
         }
 
@@ -27,23 +27,23 @@ namespace test_app.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DocId,ProcId")] DocProcedure docProcedure)
         {
-            using MyDbContext dbContext = new MyDbContext();
+            var dbConext = new MyDbContext();
             if (ModelState.IsValid)
             {
-                dbContext.Add(docProcedure);
-                await dbContext.SaveChangesAsync();
+                dbConext.Add(docProcedure);
+                await dbConext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(docProcedure);
         }
 
         // POST: DocProcedure/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int docId, int procId)
+        public async Task<IActionResult> DeleteConfirmed(int docId, int procId)
         {
-            using MyDbContext dbContext = new MyDbContext();
-            var docProcedure = await dbContext.DocProcedure.FirstOrDefaultAsync(d => d.DocId == docId && d.ProcId == procId);
+            var dbContext = new MyDbContext();
+            var docProcedure = await dbContext.DocProcedure.FirstOrDefaultAsync(p => p.DocId == docId && p.ProcId == procId);
             if (docProcedure == null)
             {
                 return NotFound();
@@ -53,7 +53,6 @@ namespace test_app.Controllers
             await dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
 
     }
 }
