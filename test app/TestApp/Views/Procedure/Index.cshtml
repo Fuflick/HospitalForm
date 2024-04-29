@@ -1,46 +1,36 @@
 @model IEnumerable<test_app.Models.Procedure>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Procedure List</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+<h1>Procedures</h1>
 
-<div class="container">
-    <h2>Procedure List</h2>
-    <table class="table">
-        <thead>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Body</th>
+            <th>Cost</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var procedure in Model)
+        {
             <tr>
-                <th>Id</th>
-                <th>Body</th>
-                <th>Cost</th>
-                <th>Date</th>
-                <th>Action</th>
+                <td>@procedure.Id</td>
+                <td>@procedure.Body</td>
+                <td>@procedure.Cost</td>
+                <td>@procedure.Date</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@procedure.Id" class="btn btn-primary">Edit</a>
+                    <form asp-action="Delete" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@procedure.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Body</td>
-                    <td>@item.Cost</td>
-                    <td>@item.Date.ToString()</td>
-                    <td>
-                        <form asp-action="Delete" method="post">
-                            <input type="hidden" name="Id" value="@item.Id" />
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    
-    <a asp-action="Create" class="btn btn-primary">Create</a>
-</div>
-
-</body>
-</html>
+        }
+    </tbody>
+</table>
