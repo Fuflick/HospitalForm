@@ -1,44 +1,33 @@
 @model IEnumerable<test_app.Models.Patient>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Patient List</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+<h1>Patients</h1>
 
-<div class="container">
-    <h2>Patient List</h2>
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
         <tr>
-            <th>Id</th>
+            <th>ID</th>
             <th>Name</th>
             <th>Gender</th>
-            <th>Action</th>
+            <th>Actions</th>
         </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model)
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
         {
             <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Gender</td>
+                <td>@patient.Id</td>
+                <td>@patient.Name</td>
+                <td>@patient.Gender</td>
                 <td>
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden" name="Id" value="@item.Id" />
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                    <a asp-action="Edit" asp-route-id="@patient.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <form asp-action="Delete" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@patient.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>
         }
-        </tbody>
-    </table>
-    
-    <a asp-action="Create" class="btn btn-primary">Create</a>
-</div>
+    </tbody>
+</table>
 
-</body>
-</html>
+<a asp-action="Create" class="btn btn-success">Create New</a>

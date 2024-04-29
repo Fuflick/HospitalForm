@@ -8,11 +8,17 @@ namespace test_app.Controllers
 {
     public class PatientController : Controller
     {
+        private readonly MyDbContext _dbContext;
+
+        public PatientController()
+        {
+            _dbContext = new MyDbContext();
+        }
+
         // GET: Patient
         public async Task<IActionResult> Index()
         {
-            using MyDbContext dbContext = new MyDbContext();
-            var patients = await dbContext.Patient.ToListAsync();
+            var patients = await _dbContext.Patient.ToListAsync();
             return View(patients);
         }
 
@@ -29,29 +35,100 @@ namespace test_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                using MyDbContext dbContext = new MyDbContext();
-                dbContext.Add(patient);
-                await dbContext.SaveChangesAsync();
+                _dbContext.Add(patient);
+                await _dbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            return View(patient);
+        }
+
+        // GET: Patient/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var patient = await _dbContext.Patient.FirstOrDefaultAsync(p => p.Id == id);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
             return View(patient);
         }
 
         // POST: Patient/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            using MyDbContext dbContext = new MyDbContext();
-            var patient = await dbContext.Patient.FindAsync(id);
+            var patient = await _dbContext.Patient.FindAsync(id);
             if (patient == null)
             {
                 return NotFound();
             }
 
-            dbContext.Patient.Remove(patient);
-            await dbContext.SaveChangesAsync();
+            _dbContext.Patient.Remove(patient);
+            await _dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+        
+        // GET: Patient/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var patient = await _dbContext.Patient.FindAsync(id);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
+            return View(patient);
+        }
+
+// POST: Patient/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Gender")] Patient patient)
+        {
+            if (id != patient.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _dbContext.Update(patient);
+                    await _dbContext.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PatientExists(patient.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(patient);
+        }
+
+
+        private bool PatientExists(int id)
+        {
+            return _dbContext.Patient.Any(p => p.Id == id);
         }
     }
 }
