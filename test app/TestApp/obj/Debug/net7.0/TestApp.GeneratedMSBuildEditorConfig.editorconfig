@@ -20,6 +20,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2UvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kraiben/Code/test app/TestApp/Views/Diagnose/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2UvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kraiben/Code/test app/TestApp/Views/Diagnose/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2UvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kraiben/Code/test app/TestApp/Views/Diagnose/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2UvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
