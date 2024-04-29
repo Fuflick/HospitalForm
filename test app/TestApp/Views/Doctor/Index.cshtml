@@ -1,44 +1,45 @@
 @model IEnumerable<test_app.Models.Doctor>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Doctor List</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+<h1>Doctors</h1>
 
-<div class="container">
-    <h2>Doctor List</h2>
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Specializations</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Specializations</th>
-                <th>Action</th>
+                <td>@doctor.Id</td>
+                <td>@doctor.Name</td>
+                <td>
+                    @if (doctor.Specializations != null && doctor.Specializations.Any())
+                    {
+                        foreach (var specialization in doctor.Specializations)
+                        {
+                            <span>@specialization</span><br />
+                        }
+                    }
+                    else
+                    {
+                        <span>No Specializations</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@doctor.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <form asp-action="Delete" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@doctor.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
-                    <td>@string.Join(", ", item.Specializations)</td>
-                    <td>
-                        <form asp-action="Delete" method="post">
-                            <input type="hidden" name="Id" value="@item.Id" />
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    
-    <a asp-action="Create" class="btn btn-primary">Create</a>
-</div>
+        }
+    </tbody>
+</table>
 
-</body>
-</html>
+<a asp-action="Create" class="btn btn-success">Create New</a>

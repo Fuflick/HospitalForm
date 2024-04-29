@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRG9jdG9yL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kraiben/Code/test app/TestApp/Views/Doctor/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRG9jdG9yL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kraiben/Code/test app/TestApp/Views/Doctor/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRG9jdG9yL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
