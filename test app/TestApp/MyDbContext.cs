@@ -21,6 +21,6 @@ public class MyDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=172.17.0.3;Database=HospitalForms;Username=postgres;Password=123");
+        optionsBuilder.UseNpgsql("Host=172.17.0.1;Database=HospitalForms;Username=postgres;Password=123");
     }
 }
