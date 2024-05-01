@@ -34,7 +34,7 @@ namespace test_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(docProcedure);
+                _context.DocProcedure.Add(docProcedure);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
