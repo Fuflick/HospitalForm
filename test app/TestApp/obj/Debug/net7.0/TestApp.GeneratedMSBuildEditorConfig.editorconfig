@@ -88,6 +88,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF0RGlhZ25vc2UvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kraiben/Code/test app/TestApp/Views/PatDiagnose/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF0RGlhZ25vc2UvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kraiben/Code/test app/TestApp/Views/PatDiagnose/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF0RGlhZ25vc2UvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kraiben/Code/test app/TestApp/Views/PatDiagnose/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGF0RGlhZ25vc2UvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

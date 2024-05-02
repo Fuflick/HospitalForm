@@ -74,7 +74,7 @@ namespace test_app.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DocProcedureExists(patProcedure.Id))
+                    if (!PatProcedureExists(patProcedure.Id))
                     {
                         return NotFound();
                     }
@@ -134,9 +134,9 @@ namespace test_app.Controllers
         
 
 
-        private bool DocProcedureExists(int id)
+        private bool PatProcedureExists(int id)
         {
-            return _context.DocProcedure.Any(e => e.Id == id);
+            return _context.PatProcedure.Any(e => e.Id == id);
         }
     }
 }
