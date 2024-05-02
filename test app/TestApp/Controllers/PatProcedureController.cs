@@ -28,7 +28,7 @@ namespace test_app.Controllers
         // POST: PatProcedure/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PatId,ProcId")] PatProcedure patProcedure)
+        public async Task<IActionResult> Create([Bind("Id,PatId,Procid")] PatProcedure patProcedure)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace test_app.Controllers
         // POST: DocProcedure/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PatId,ProcId")] PatProcedure patProcedure)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PatId,Procid")] PatProcedure patProcedure)
         {
             if (id != patProcedure.Id)
             {
