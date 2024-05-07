@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using test_app.Models;
 
@@ -24,22 +25,30 @@ namespace test_app.Controllers
         // GET: DocProcedure/Create
         public IActionResult Create()
         {
+            // Заполнение списка врачей
+            ViewBag.DoctorsList = new SelectList(_context.Doctor.ToList(), "Id", "Name");
+
+            // Заполнение списка диагнозов
+            ViewBag.DiagnosesList = new SelectList(_context.Diagnose.ToList(), "Id", "Body");
+
             return View();
         }
 
-        // POST: DocProcedure/Create
+
+        // POST: DocDiagnose/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,DocId,DiagId")] DocDiagnose docDiagnose)
         {
             if (ModelState.IsValid)
             {
-                _context.DocDiagnose.Add(docDiagnose);
+                _context.Add(docDiagnose);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(docDiagnose);
         }
+
 
         // GET: DocProcedure/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -54,8 +63,14 @@ namespace test_app.Controllers
             {
                 return NotFound();
             }
+
+            // Получите данные о врачах и диагнозах
+            ViewBag.DoctorsList = new SelectList(_context.Doctor, "Id", "Name");
+            ViewBag.DiagnosesList = new SelectList(_context.Diagnose, "Id", "Body");
+
             return View(docDiagnose);
         }
+
 
         // POST: DocProcedure/Edit/5
         [HttpPost]

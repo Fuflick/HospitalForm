@@ -6,12 +6,12 @@
     <input type="hidden" asp-for="Id" />
     <div class="form-group">
         <label asp-for="DocId" class="control-label"></label>
-        <input asp-for="DocId" class="form-control" />
+        <select asp-for="DocId" class="form-control" asp-items="ViewBag.DoctorsList"></select>
         <span asp-validation-for="DocId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="DiagId" class="control-label"></label>
-        <input asp-for="DiagId" class="form-control" />
+        <select asp-for="DiagId" class="form-control" asp-items="ViewBag.DiagnosesList"></select>
         <span asp-validation-for="DiagId" class="text-danger"></span>
     </div>
     <div class="form-group">

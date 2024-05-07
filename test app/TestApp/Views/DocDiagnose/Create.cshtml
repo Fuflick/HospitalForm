@@ -13,13 +13,13 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.DocId, htmlAttributes: new { @class = "control-label" })
-        @Html.TextBoxFor(model => model.DocId, new { @class = "form-control" })
+        @Html.DropDownListFor(model => model.DocId, (IEnumerable<SelectListItem>)ViewBag.DoctorsList, "Select Doctor", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.DocId, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.DiagId, htmlAttributes: new { @class = "control-label" })
-        @Html.TextBoxFor(model => model.DiagId, new { @class = "form-control" })
+        @Html.DropDownListFor(model => model.DiagId, (IEnumerable<SelectListItem>)ViewBag.DiagnosesList, "Select Diagnosis", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.DiagId, "", new { @class = "text-danger" })
     </div>
 
