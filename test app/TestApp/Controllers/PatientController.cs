@@ -127,7 +127,7 @@ namespace test_app.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DecreaseProcedurePrices(int patientId)
+        public async Task<IActionResult> DiscountConfirmed(int patientId)
         {
             // Найти все связанные процедуры для данного пациента
             var patProcedures = _dbContext.PatProcedure.Where(x => x.PatId == patientId).ToList();
@@ -149,7 +149,22 @@ namespace test_app.Controllers
             return RedirectToAction(nameof(Index)); // Перенаправление на нужную страницу
         }
 
-        
+        public async Task<IActionResult> GiveDiscount(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var patient = await _dbContext.Patient.FirstOrDefaultAsync(p => p.Id == id);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
+            return View(patient);
+        }
+
 
         private bool PatientExists(int id)
         {
