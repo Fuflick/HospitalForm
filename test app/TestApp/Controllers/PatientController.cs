@@ -124,7 +124,32 @@ namespace test_app.Controllers
             }
             return View(patient);
         }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DecreaseProcedurePrices(int patientId)
+        {
+            // Найти все связанные процедуры для данного пациента
+            var patProcedures = _dbContext.PatProcedure.Where(x => x.PatId == patientId).ToList();
 
+            // Уменьшить цены на эти процедуры на заданное значение
+            foreach (var patProcedure in patProcedures)
+            {
+                var procedure = await _dbContext.Procedure.FirstOrDefaultAsync(x => x.Id == patProcedure.Procid);
+                if (procedure != null)
+                {
+                    procedure.Cost *= (decimal)0.9;
+                    _dbContext.Update(procedure);
+                }
+            }
+
+            // Сохранить изменения в базе данных
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index)); // Перенаправление на нужную страницу
+        }
+
+        
 
         private bool PatientExists(int id)
         {

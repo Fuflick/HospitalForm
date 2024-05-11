@@ -21,8 +21,12 @@
                 <td>
                     <a asp-action="Edit" asp-route-id="@patient.Id" class="btn btn-primary btn-sm">Edit</a>
                     <form asp-action="Delete" method="post" style="display: inline;">
-                        <input type="hidden" name="id" value="@patient.Id" />
+                        <input type="hidden" name="id" value="@patient.Id"/>
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    <form asp-action="DecreaseProcedurePrices" method="post" style="display: inline;">
+                        <input type="hidden" name="patientId" value="@patient.Id"/>
+                        <button type="submit" class="btn btn-danger btn-sm"> Give low price</button>
                     </form>
                 </td>
             </tr>

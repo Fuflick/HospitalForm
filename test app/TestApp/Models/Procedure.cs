@@ -8,7 +8,7 @@ public class Procedure
     
     public string? Body { get; set; }
 
-    public int? Cost { get; set; }
+    public decimal? Cost { get; set; }
 
     public DateOnly? Date { get; set; }
 }

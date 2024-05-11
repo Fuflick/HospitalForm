@@ -131,9 +131,6 @@ namespace test_app.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        
-
-
         private bool PatProcedureExists(int id)
         {
             return _context.PatProcedure.Any(e => e.Id == id);
